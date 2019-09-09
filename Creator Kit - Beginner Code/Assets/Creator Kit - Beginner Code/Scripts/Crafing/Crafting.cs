@@ -49,11 +49,16 @@ public class Crafting : MonoBehaviour
                 characterData.Inventory.Entries[x].Count = 0;
                 characterData.Inventory.Entries[x] = null;
             }
-
-            characterData.Inventory.Entries[12] = new InventorySystem.InventoryEntry();
-            characterData.Inventory.Entries[12].Item = recipe.resultedItem[0];
-            characterData.Inventory.Entries[12].Count = 1;
-
+            for (int j = 0; j < characterData.Inventory.Entries.Length; j++)
+            {
+                if (characterData.Inventory.Entries[j] == null)
+                {
+                    characterData.Inventory.Entries[j] = new InventorySystem.InventoryEntry();
+                    characterData.Inventory.Entries[j].Item = recipe.resultedItem[0];
+                    characterData.Inventory.Entries[j].Count = 1;
+                    break;
+                }
+            }
         }
         else
         {
